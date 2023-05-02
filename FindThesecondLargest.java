@@ -1,25 +1,51 @@
-#include <stdio.h>
-#include<limits.h>
-int main() {
-	int a[100],n;
-	//printf("Enter thr number of the elements\n");
-	scanf("%d",&n);
-	int first=INT_MIN,second=INT_MIN,third=INT_MIN;
-	for(int i=0;i<n;i++){
-	    scanf("%d",&a[i]);
-	    if(a[i]>first){
-	        third=second;
-	        second=first;
-	        first=a[i];
-	    }
-	    else if(a[i]>second && first!=a[i] ){
-	        third=second;
-	        second=a[i];
-	    }
-	    else if(a[i]>third  && second!=a[i]){
-	        third=a[i];
-	    }
-	}
-	printf(" first element:%d , second element :%d and the third element is %d",first,second,third);
-	return 0;
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine().trim());
+        while (tc-- > 0) {
+            String[] inputLine;
+            int n = Integer.parseInt(br.readLine().trim());
+            int[] arr = new int[n];
+            inputLine = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                arr[i] = Integer.parseInt(inputLine[i]);
+            }
+
+            int ans = new Solution().print2largest(arr, n);
+            System.out.println(ans);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution {
+    int print2largest(int arr[], int n) {
+        int first=-1,second=-1;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]>first)
+            {
+                second=first;
+                first=arr[i];
+            }
+            else if(arr[i]>second  && arr[i]!=first){
+                second=arr[i];
+            }
+        }
+        return second;
+    }
 }
